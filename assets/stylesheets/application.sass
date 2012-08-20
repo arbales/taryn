@@ -1,0 +1,132 @@
+@import 'compass/css3'
+@import 'colors'
+@import 'fonts'
+@import 'utils'
+@import 'behaviors'
+@import 'ui'
+
+html, body
+  padding: 0
+  margin: 0
+  background-color: black
+
+cite
+  font-style: normal
+  font-variant: small-caps
+  text-transform: uppercase
+
+a
+  text-decoration: none
+  color: #58beff
+
+
+//
+// Effects
+//
+
+= dark-text-shadow
+  +text-shadow(rgba(0,0,0,.33) 0 1px 1px)
+
+//
+// Text Blocks
+//
+
+$tiny-copy-margin: 8px
+
+%tiny-copy
+  font-size: 11px
+  line-height: 150%
+  margin: $tiny-copy-margin 0
+
+%small-copy
+  font-size: 13px
+  line-height: 175%
+
+.large-statement
+  font-size: 34px
+
+  @media screen and (max-width: 980px)
+    font-size: 30px
+
+.medium-statement
+  font-size: 30px
+  @media screen and (max-width: 980px)
+    font-size: 24px
+
+.small-statement
+  font-size: 22px
+  @media screen and (max-width: 980px)
+    font-size: 18px
+
+
+p 
+  color: white
+  +font-tisa
+
+p.credit
+  +dark-text-shadow
+  @extend %tiny-copy
+  margin-left: $tiny-copy-margin
+
+//
+
+.footer-page
+  position: absolute
+  z-index: 999
+  bottom: 12px
+  left: 12px
+
+
+// 
+// Headers
+// 
+
+
+h1, h2, h3, h4, h5, h6, .large-header
+  +font-helvetica-neue
+  +text-shadow(#000 0 1px 1px)
+
+  &.title
+    font-size: 56px
+    color: #fff
+    margin-bottom: 1.75ex
+
+
+//
+//  Regions
+//
+
+.full-width, header, footer
+  width: 960px
+  margin: 0 auto
+
+  @media screen and (max-width: 980px)
+    width: 480px
+
+.panel
+  +inline-block
+  vertical-align: top
+
+.left-panel
+  @extend .panel
+  width: 620px
+  margin-right: 10px
+
+.right-panel
+  @extend .panel
+  width: 270px
+  margin-left: 30px
+
+.content
+  position: relative
+  z-index: 1
+
+.slide-block
+  max-width: 960px
+  margin: auto
+  +prevent-selection
+
+  @media screen and (max-width: 960px)
+    max-width: 480px
+
+

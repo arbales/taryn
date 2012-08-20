@@ -1,0 +1,21 @@
+@-webkit-keyframes FadeIn 
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@-webkit-keyframes FadeOut
+  100%
+    opacity: 0
+  0%
+    opacity: 1
+
+
+.__fadeOut
+  -webkit-animation: FadeOut 2s ease-out
+  -webkit-animation-fill-mode: both
+
+
+.__fadeIn
+  -webkit-animation: FadeIn .5s ease-in-out
+  -webkit-animation-fill-mode: both
