@@ -23,6 +23,7 @@ map '/assets' do
   Application.set :assets_prefix, "/assets"
   Application.set :digest_assets, true
 
+  environment.append_path 'assets/samples'
   environment.append_path 'assets/javascripts'
   environment.append_path 'assets/stylesheets'
   environment.append_path 'assets/images'
@@ -41,6 +42,12 @@ map '/assets' do
   #
   # Application.helpers Sinatra::Sprockets::Helpers
   run environment
+end
+
+module Sass::Script::Functions
+  def random(min = Sass::Script::Number.new(0), max = Sass::Script::Number.new(100))
+    Sass::Script::Number.new(rand(min.value..max.value), max.numerator_units, max.denominator_units)
+  end
 end
 
 map '/' do

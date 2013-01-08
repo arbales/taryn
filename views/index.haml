@@ -1,4 +1,21 @@
-#wrapper
+#wrapper.__fadeIn.__delay
+  %nav.navigation-main.hidden
+    %span.navigator{'data-sigil' => 'navigator'}
+    %ul.navbar-vertical
+      %li
+        %a{href: '/about'} About
+      %li
+        %a{href: '/editing'} Editing
+      %li
+        %a{href: '/directing'} Directing
+      %li
+        %a{href: '/contact'} Contact
+      %li
+        %a{href: '/news'} News
+
+  .panes
+    .pane.pane-editing.__fadeIn{style: 'display: none'}
+      %ul.navbar-circles
   %footer.footer-page
     %p.credit
       %cite Wave Footage

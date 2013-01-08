@@ -16,3 +16,53 @@
   @extend .base-screen
   background-color: #000
 
+
+.navigation-main
+  .navigator
+    background: black url('/assets/navigator.png') center center no-repeat
+    display: inline-block
+    height: 54px
+    width: 54px
+    cursor: pointer
+    &:active
+      background: black url('/assets/navigator-active.png') center center no-repeat
+
+.navbar-circles
+  text-align: center
+
+  &.animate-out li
+    @extend .__bubbleOut
+
+  li
+    @extend .__bubbleIn
+    list-style-type: none
+    display: inline-block
+    margin: 8px
+    $i: 6
+    @while $i > 0
+      &:nth-child(#{$i})
+        -webkit-animation-delay: $i * .18s
+        img
+          $scale: random(60,100) / 100
+          -webkit-transform: scale($scale)
+      $i: $i - 1
+  li img
+    width: 200px
+    height: 200px
+
+.navbar-vertical
+  margin: 0
+    left: -4px
+  padding: 0
+  display: inline-block
+  vertical-align: top
+  li
+    display: block
+  a
+    font-family: 'Helvetica Neue'
+    line-height: 16px
+    font-size: 16px
+    display: block
+    padding: $navbar-item-padding
+    width: $navbar-width-unit
+    background: $navbar-background-color

@@ -13,7 +13,10 @@ class Application < Sinatra::Base
     haml :index
   end
 
-  get '/philosophy' do
-    haml 'portfolio/philosopy'.to_sym
+  ['', 'about', 'editing', 'work', 'directing', 'contact', 'news'].each do |route|
+    get "/#{route}" do
+      haml :index
+    end
   end
+
 end

@@ -11,10 +11,44 @@
     opacity: 1
 
 
+@-webkit-keyframes BubbleOut
+  100%
+    opacity: 0
+    -webkit-transform: scale(.85) translateY(-2px) rotateY(-35deg)
+
+  50%
+    -webkit-transform: rotateY(20deg)
+
+  0%
+    opacity: 1
+    -webkit-transform: scale(1.0) translateY(0px) rotateY(0deg)
+
+
+@-webkit-keyframes BubbleIn
+  0%
+    opacity: 0
+    -webkit-transform: scale(.85) translateY(-10px) rotateY(35deg)
+
+  80%
+    -webkit-transform: translateY(0px)
+  100%
+    opacity: 1
+    -webkit-transform: scale(1.0) rotateY(0deg)
+
+.__bubbleOut
+  -webkit-animation: BubbleOut .2s ease-out
+  -webkit-animation-fill-mode: both
+
+.__bubbleIn
+  -webkit-animation: BubbleIn .3s ease-in-out
+  -webkit-animation-fill-mode: both
+
 .__fadeOut
   -webkit-animation: FadeOut 2s ease-out
   -webkit-animation-fill-mode: both
 
+.__delay
+  -webkit-animation-delay: 1s
 
 .__fadeIn
   -webkit-animation: FadeIn .5s ease-in-out
