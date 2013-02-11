@@ -1,21 +1,81 @@
-#wrapper.__fadeIn.__delay
+%script{type: "text/x-handlebars", data: {"template-name" => 'nav'}}
+  {{#view T.NavigatorView}}
   %nav.navigation-main.hidden
-    %span.navigator{'data-sigil' => 'navigator'}
-    %ul.navbar-vertical
+    :plain
+      <span class="navigator" {{action "toggle" target="view"}}></span>
+    %ul.navbar-vertical{style: "display:none"}
       %li
-        %a{href: '/about'} About
+        {{#linkTo "about"}}About{{/linkTo}}
       %li
-        %a{href: '/editing'} Editing
+        {{#linkTo "editing"}}Editing{{/linkTo}}
       %li
-        %a{href: '/directing'} Directing
-      %li
-        %a{href: '/contact'} Contact
-      %li
-        %a{href: '/news'} News
+        {{#linkTo "directing"}}Directing{{/linkTo}}
+  {{/view}}
 
+%script{type: "text/x-handlebars", data: {"template-name" => 'application'}}
+  {{template "nav"}}
+  {{outlet}}
+
+%script{type: "text/x-handlebars", data: {"template-name" => 'about'}}
+  %h1 Taryn Gould
+  %p 
+    Taryn Gould is a director and editor based in in New York City.
+    %br/
+    Her work has been featured on RollingStone.com, MTV2, BET and IFC.com
+  %br
+  %p.inline-list
+    <a href="http://vimeo.com/taryngould">Vimeo</a>
+    %br 
+    <a href="/assets/taryn-gould-cv.pdf">Curriculum Vitae</a>
+    %br
+    <a href="mailto:tarynahira@gmail.com">Contact</a>
+
+%script{type: "text/x-handlebars", data: {"template-name" => 'contact'}}
+  %h1 Contact
+
+%script{type: "text/x-handlebars", data: {"template-name" => 'project'}}
+  .viewer
+    %p.controls
+      {{#if isEditing}}
+      {{#linkTo "editing"}}Return to Gallery{{/linkTo}}
+      {{else}}
+      {{#linkTo "directing"}}Return to Gallery{{/linkTo}}
+      {{/if}}
+
+    :plain
+      {{#if vimeo}}
+        {{vimeoEmbed currentVideoURL}}
+        {{#if shouldPaginate}}
+          <p>
+            {{#each video in vimeo}}
+              <span class="pagination" {{action "pickVideo" video}}><span class='circle'></span></span>
+            {{/each}}
+          </p>
+        {{/if}}
+      {{else}}
+        <img {{bindAttr src="posterPath"}}/>
+      {{/if}}
+
+    %h1 {{title}}
+    {{#if director}}
+    <em>dir</em> <span class="author">{{director}}</span>
+    {{/if}}
+    {{#if description}}
+    <p>{{breakLines description}}</p>
+    {{/if}}
+
+
+%script{type: "text/x-handlebars", data: {"template-name" => 'gallery'}}
   .panes
-    .pane.pane-editing.__fadeIn{style: 'display: none'}
+    .pane.pane-editing
       %ul.navbar-circles
+        {{#each project in projects}}
+        <li class="circle">{{#linkTo "project" project}}<img {{bindAttr src="project.circlePath"}} {{bindAttr class="project.className"}}/>{{/linkTo}}</li>
+        {{/each}}
+
+%script{type: "text/x-handlebars", data: {"template-name" => 'index'}}
+
+%script{type: "text/x-handlebars", data: {"template-name" => 'footer'}}
   %footer.footer-page
     %p.credit
       %cite Wave Footage

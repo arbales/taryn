@@ -1,4 +1,5 @@
-@-webkit-keyframes FadeIn 
+@import "animation"
++keyframes(FadeIn)
   0%
     opacity: 0
   100%
@@ -24,32 +25,41 @@
     -webkit-transform: scale(1.0) translateY(0px) rotateY(0deg)
 
 
-@-webkit-keyframes BubbleIn
+
+
++keyframes(BubbleIn)
   0%
     opacity: 0
-    -webkit-transform: scale(.85) translateY(-10px) rotateY(35deg)
+    +transform(scale(.85) translateY(-10px) rotateY(35deg))
 
   80%
-    -webkit-transform: translateY(0px)
+    +transform(translateY(0px))
   100%
     opacity: 1
-    -webkit-transform: scale(1.0) rotateY(0deg)
+    +transform(scale(1.0) rotateY(0deg))
 
 .__bubbleOut
   -webkit-animation: BubbleOut .2s ease-out
   -webkit-animation-fill-mode: both
 
 .__bubbleIn
-  -webkit-animation: BubbleIn .3s ease-in-out
-  -webkit-animation-fill-mode: both
+  +animation(BubbleIn .3s ease-in-out)
+  +animation-fill-mode(both)
 
 .__fadeOut
   -webkit-animation: FadeOut 2s ease-out
   -webkit-animation-fill-mode: both
 
 .__delay
+  animation-delay: 1s
   -webkit-animation-delay: 1s
 
 .__fadeIn
-  -webkit-animation: FadeIn .5s ease-in-out
-  -webkit-animation-fill-mode: both
+  +animation(FadeIn .5s ease-in-out)
+  +animation-fill-mode(both)
+
+.__longFadeIn
+  +animation(FadeIn 2s 3s ease-in-out)
+  +animation-fill-mode(both)
+  //-webkit-animation: FadeIn 2s 3s ease-in-out
+  //-webkit-animation-fill-mode: both

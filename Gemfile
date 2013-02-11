@@ -18,6 +18,8 @@ gem 'coffee-script', :require => "coffee_script"
 gem 'uglifier'
 gem 'yui-compressor', :require => "yui/compressor"
 gem 'therubyracer'
+gem 'rdiscount'
+gem "animation", "~> 0.1.alpha.0"
 
 gem 'pry'
 gem 'pry-doc'

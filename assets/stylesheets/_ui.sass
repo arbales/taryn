@@ -1,3 +1,6 @@
+#ytapiplayer
+  @extend .__longFadeIn
+
 .base-screen
   position: absolute
   width: 100%
@@ -15,9 +18,72 @@
 .black-screen
   @extend .base-screen
   background-color: #000
+.pane-editing
+  width: 100%
+.viewer
+  @extend .__fadeIn
+  width: 854px
+  margin: auto
+    top: 100px
+  -webkit-animation-delay: .33s
+  text-align: center
 
+  @media screen and (max-width: 854px)
+    width: 100%
+    margin-top: 0
+    iframe
+      width: 100% !important
+    .controls
+      text-align: center
+
+  &, p
+    color: #666
+    font-size: 12px
+
+  .controls
+    text-align: left
+    +sans
+    a
+      color: #666
+
+  .author
+    text-transform: uppercase
+
+  h1
+    color: black
+    font-size: 16px
+    text-shadow: none
+    margin-top: 32px
+    +semibold
+
+  .pagination ~ h1
+    margin-top: 12px
+
+.pagination
+  width: 24px
+  display: inline-block
+  height: 24px
+  margin: 18px 0
+  .circle
+    background-color: black
+    display: inline-block
+    width: 16px
+    height: 16px
+    cursor: pointer
+    +border-radius(16px)
+  
+  +transition(-webkit-transform .18s)
+  +transition(transform .18s)
+  &:hover
+    +scale(.85)
+  &.active, &:active
+    +scale(1.33)
+    opacity: .5
 
 .navigation-main
+  position: absolute
+  top: 33%
+  z-index: 999
   .navigator
     background: black url('/assets/navigator.png') center center no-repeat
     display: inline-block
@@ -29,26 +95,47 @@
 
 .navbar-circles
   text-align: center
-
+  padding: 0 5%
+  
   &.animate-out li
     @extend .__bubbleOut
+    //
 
   li
     @extend .__bubbleIn
+    @extend .__zoomHover
     list-style-type: none
     display: inline-block
-    margin: 8px
-    $i: 6
+    margin: 24px 8px
+    $i: 11
     @while $i > 0
-      &:nth-child(#{$i})
-        -webkit-animation-delay: $i * .18s
-        img
-          $scale: random(60,100) / 100
-          -webkit-transform: scale($scale)
+
+      &:hover img.circle-size-#{$i}
+        +scale(($i + 1) / 10)
+
+      &:active img.circle-size-#{$i}
+        +scale(($i - 1) / 10)
+        +opacity(0.5)
+
+      img.circle-size-#{$i}
+        +transition(-moz-transform .18s)
+        +transition(-webkit-transform .18s)
+        +transition(transform .18s)
+        +scale($i/10)
+
+      &:nth-of-type(#{$i})
+        +animation-delay($i * .18s)
+
       $i: $i - 1
+
+
   li img
     width: 200px
     height: 200px
+    filter: url(/greyscale.svg#greyscale)
+    +filter(grayscale(100%))
+    filter: gray
+    -webkit-filter: grayscale(1)
 
 .navbar-vertical
   margin: 0
@@ -56,13 +143,27 @@
   padding: 0
   display: inline-block
   vertical-align: top
+
   li
     display: block
+    //
+      &:first-child a
+        +border-top-radius(32px)
+
+      &:last-child a
+        +border-bottom-radius(32px)
+
   a
-    font-family: 'Helvetica Neue'
+    color: white
     line-height: 16px
     font-size: 16px
     display: block
     padding: $navbar-item-padding
     width: $navbar-width-unit
     background: $navbar-background-color
+    +transition(color .33s)
+
+    &.active
+      color: rgba(255,255,255,.33)
+
+

@@ -1,5 +1,5 @@
 # $:.unshift File.expand_path("../", __FILE__)
-require 'bundler'
+require 'bundler/setup'
 Bundler.require
 
 require 'sinatra'
@@ -15,25 +15,28 @@ require 'uglifier'
 require "yui/compressor"
 
 require "./application"
+# require 'handlebars_assets'
 
 map '/assets' do
   environment = Sprockets::Environment.new
 
   Application.set :sprockets, environment
   Application.set :assets_prefix, "/assets"
-  Application.set :digest_assets, true
+  Application.set :digest_assets, false
 
   environment.append_path 'assets/samples'
   environment.append_path 'assets/javascripts'
   environment.append_path 'assets/stylesheets'
   environment.append_path 'assets/images'
   environment.append_path 'vendor/assets/javascripts'
-
-
+  # environment.append_path HandlebarsAssets.path
+  
+  # HandlebarsAssets::Config.ember = true
+  
   Sprockets::Helpers.configure do |config|
     config.environment  = environment
     config.prefix       = "/assets"
-    config.digest       = true
+    config.digest       = false
   end
 
   # environment.js_compressor = Uglifier.new(:copyright => false)

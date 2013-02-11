@@ -18,7 +18,7 @@ jQuery.fn.tubular = function(videoId,wrapperId) {
 	t = setTimeout("resizePlayer()",1000); // this is hacky, but i couldn't figure out why the yt player was behind
 
 	jQuery('html,body').css('height','100%');
-	jQuery('body').prepend('<div id="yt-container" style="overflow: hidden; position: fixed; z-index: 1; top: 0; left: 0; opacity: .5;"><div id="ytapiplayer">You need Flash player 8+ and JavaScript enabled to view this video.</div></div><div id="video-cover" style="position: fixed; width: 100%; height: 100%; z-index: 2;"></div>');
+	jQuery('body').prepend('<div id="yt-container" style="overflow: hidden; position: fixed; z-index: 1; top: 0; left: 0"><div id="ytapiplayer">You need Flash player 8+ and JavaScript enabled to view this video.</div></div><div id="video-cover" style="position: fixed; width: 100%; height: 100%; z-index: 2;"></div>');
 	jQuery('#' + wrapperId).css({position: 'absolute', 'z-index': 99, top: 0, left: 0, width: '100%', height: '100%'});
 	
 	// initiailize vars
@@ -29,7 +29,7 @@ jQuery.fn.tubular = function(videoId,wrapperId) {
 	var duration;
 
 	// iframe embedded yt player
-	var iframe = '<iframe id="myytplayer" width="' + videoWidth + '" height="' + videoHeight + '" src="http://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=0&modestbranding=1&showinfo=0&version=3&wmode=transparent&loop=1&playlist=' + videoId + '" frameborder="0" allowfullscreen></iframe>';
+	var iframe = '<iframe id="myytplayer" width="' + videoWidth + '" height="' + videoHeight + '" src="http://www.youtube.com/embed/' + videoId + '?enablejsapi=1&autoplay=1&controls=0&modestbranding=1&showinfo=0&version=3&wmode=transparent&loop=1&playlist=' + videoId + '" frameborder="0" allowfullscreen></iframe>';
 	
 	/*
 
