@@ -1,21 +1,24 @@
-$('body').tubular 'kU2qaF0p_EQ','wrapper',
-  playButtonClass: 'tubular-play'
-  pauseButtonClass: 'tubular-pause'
-  muteButtonClass: 'tubular-mute'
-
 BackgroundVideo =
   mute: ->
-    #callPlayer($('#myytplayer'), "mute")
+    callPlayer($('#myytplayer'), "mute")
   unmute: ->
-    #callPlayer($('#myytplayer'), "unMute")
+    callPlayer($('#myytplayer'), "unMute")
   pause: ->
-    #callPlayer($('#myytplayer'), "pauseVideo")
+    callPlayer($('#myytplayer'), "pauseVideo")
   play: ->
-    #callPlayer($('#myytplayer'), "playVideo")    
+    callPlayer($('#myytplayer'), "playVideo")
 
-window.flashCheck = ->
+flashCheck = ->
   $('html').addClass(if typeof swfobject isnt 'undefined' && swfobject.getFlashPlayerVersion().major isnt 0  then 'flash' else 'no-flash')
+  if $('html').hasClass 'flash'
+    $('body').tubular 'kU2qaF0p_EQ','wrapper',
+      playButtonClass: 'tubular-play'
+      pauseButtonClass: 'tubular-pause'
+      muteButtonClass: 'tubular-mute'
+  else
+    window.callPlayer = ->
 
+flashCheck()
 ###
 jQuery.fn.slider = ->
 BV = new $.BigVideo()
