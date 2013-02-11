@@ -79,7 +79,7 @@ T.ProjectController = Ember.ObjectController.extend
     @content.get('vimeo')[@get('currentVideoNo')]
   ).property('currentVideoNo', 'content.name')
   currentVideoURL: ( ->
-    "http://player.vimeo.com/video/#{@content.get('vimeo')[@get('currentVideoNo')]}?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0"
+    "http://player.vimeo.com/video/#{@content.get('vimeo')[@get('currentVideoNo')]}?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1"
   ).property('currentVideoNo', 'content.name')
 
   shouldPaginate: (->
