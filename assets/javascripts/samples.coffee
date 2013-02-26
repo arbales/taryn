@@ -122,8 +122,8 @@ window.Projects = [
   type: "editing"
   name: "ben-harper"
   title: "Ben Harper and the Relentless7"
-  vimeo: [44259089]
-  size: 5
+  vimeo: [60498367]
+  size: 6
 ,
   type: "editing"
   name: "bean"
@@ -177,10 +177,3 @@ window.Projects = [
   vimeo: [42021308]
   size: 8
 ]
-
-###
-Pearl Jam "Backspacer" Short
-
-Trailer for "Benny Bean and his Preservation Hall Revue"
-
-<iframe src="http://player.vimeo.com/video/45813993" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>

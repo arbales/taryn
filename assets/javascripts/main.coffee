@@ -107,9 +107,20 @@ T.ProjectView = Ember.View.extend
           ""
   ).observes('controller.currentVideoNo')
 
+  resize: =>
+    top = ($(window).height() - @$('.viewer').outerHeight())/2.5
+    if $(window).height() < @$('.viewer').outerHeight()
+      top = 0
+    @$('.viewer').css
+      marginTop: top
+
   didInsertElement: ->
     Ember.run.next BackgroundVideo.pause
     @toggleActivePage()
+    @resize()
+    Ember.run.next @resize
+    $(window).on 'resize', @resize
+
     $('html').toggleClass 'viewer-frame', on
     $('#yt-container').css
       opacity: 0
@@ -132,7 +143,7 @@ T.NavigatorView = Ember.View.extend
 T.AboutView = Ember.View.extend
   classNames: ["about"]
   resize: =>
-    top = ($(window).height() - @$('.about').outerHeight())/3
+    top = ($(window).height() - @$('.about').outerHeight())/2
     if $(window).height() < @$('.about').outerHeight()
       top = 0
     @$('.about').css
@@ -148,7 +159,7 @@ T.AboutView = Ember.View.extend
 T.DirectingView = Ember.View.extend
   templateName: "gallery"
   resize: =>
-    top = ($(window).height() - @$('.pane-editing').outerHeight())/3
+    top = ($(window).height() - @$('.pane-editing').outerHeight())/2.5
     if $(window).height() < @$('.pane-editing').outerHeight()
       top = 0
     @$('.pane-editing').css

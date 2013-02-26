@@ -1,3 +1,5 @@
+$circle-base-size: 78px
+
 #ytapiplayer
   @extend .__longFadeIn
 
@@ -24,7 +26,6 @@
   @extend .__fadeIn
   width: 854px
   margin: auto
-    top: 100px
   -webkit-animation-delay: .33s
   text-align: center
 
@@ -44,12 +45,12 @@
 
   .author
     text-transform: uppercase
+    letter-spacing: 1px
 
   h1
     color: black
     font-size: 16px
     text-shadow: none
-    margin-top: 32px
     +semibold
 
   .pagination ~ h1
@@ -115,20 +116,31 @@
 
 .navigation-main
   position: absolute
-  top: 33%
+  top: 0
   z-index: 999
   .navigator
-    background: black url('/assets/navigator.png') center center no-repeat
+    background: rgba(0,0,0,.65)
+    padding: 18px
+    text-transform: uppercase
+    letter-spacing: 2px
+    +font-tisa
+    font:
+      size: 13px
+
+    color: rgba(255,255,255, .5)
+    // background: black url('/assets/navigator.png') 8px center no-repeat
     display: inline-block
-    height: 54px
-    width: 54px
+    //
+      padding:
+        left: 54px
+        top: 18px
     cursor: pointer
-    &:active
-      background: black url('/assets/navigator-active.png') center center no-repeat
+    // &:active
+      background: black url('/assets/navigator-active.png') 8px center no-repeat
 
 .navbar-circles
   text-align: center
-  padding: 0 5%
+  padding: 0 1%
   
   &.animate-out li
     @extend .__bubbleOut
@@ -139,7 +151,7 @@
     @extend .__zoomHover
     list-style-type: none
     display: inline-block
-    margin: 24px 8px
+    margin: 20px 8px
     $i: 11
     @while $i > 0
 
@@ -155,6 +167,7 @@
         +transition(-webkit-transform .18s)
         +transition(transform .18s)
         +scale($i/10)
+        +opacity(.85)
 
       &:nth-of-type(#{$i})
         +animation-delay($i * .18s)
@@ -163,18 +176,24 @@
 
 
   li img
-    width: 200px
-    height: 200px
-    filter: url(/greyscale.svg#greyscale)
-    +filter(grayscale(100%))
-    filter: gray
-    -webkit-filter: grayscale(1)
+    width: $circle-base-size
+    height: $circle-base-size
+    //
+      filter: url(/greyscale.svg#greyscale)
+      +filter(grayscale(100%))
+      filter: gray
+      -webkit-filter: grayscale(1)
+    //
+      &:hover
+        filter: none
+        +filter(none)
+        -webkit-filter: none
 
 .navbar-vertical
   margin: 0
-    left: -4px
+    top: 2px
   padding: 0
-  display: inline-block
+  //display: inline-block
   vertical-align: top
 
   li
@@ -189,7 +208,12 @@
   a
     color: white
     line-height: 16px
-    font-size: 16px
+    +font-tisa
+    text-transform: uppercase
+    letter-spacing: 2px
+    font:
+      size: 11px
+    margin-bottom: 2px
     display: block
     padding: $navbar-item-padding
     width: $navbar-width-unit
